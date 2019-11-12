@@ -2,7 +2,11 @@ html {
   font-size: 62.5%;
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg %3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%23180d1c' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%23261431' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23351947' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%23451e5e' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%23552277' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 * {
   box-sizing: border-box;
@@ -11,7 +15,7 @@ body {
 }
 .content-wrapper {
   width: 100%;
-  height: 200vh;
+  height: auto;
 }
 
 /* NAVIGATION */
@@ -74,12 +78,8 @@ body {
 /* HERO */
 
 .hero-image {
-  background-image: url("./img/photo-of-person-reading-book-on-beach-1730560.jpg");
+  background-image: linear-gradient(to bottom, #000000, #180d1c, #261431, #351947, #451e5e, #552277);
   height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
 }
 .hero-text {
   text-align: center;
@@ -102,4 +102,56 @@ body {
 .hero-text button:hover {
   background-color: #555;
   color: white;
+}
+
+/* BOOKS */
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 15rem;
+  height: auto;
+  width: 100%;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 400px;
+  margin: 5rem;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
 }
