@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Lobster&display=swap");
-
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 html {
   font-size: 62.5%;
 }
@@ -9,11 +13,6 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-}
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 .content-wrapper {
   width: 100%;
@@ -26,37 +25,20 @@ body {
   font-family: "Lobster", cursive;
   display: flex;
   justify-content: center;
-  overflow: hidden;
   background-color: transparent;
   padding: 8rem 1rem;
   transition: 0.4s;
   position: fixed;
   width: 100%;
-  top: 0;
   z-index: 99;
 }
-.navbar-elements_logo {
+.navbar-elements {
   width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.navbar-elements_links {
-  width: 35%;
-  display: flex;
-  justify-content: space-between;
-}
-.navbar a {
-  color: white;
-  padding: 1.2rem;
-  text-decoration: none;
-  font-size: 1.8rem;
-  line-height: 2.5rem;
-  border-radius: 0.4rem;
-  font-size: 3rem;
-}
-.logo-container {
-  width: 40%;
+.navbar-elements_logo {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -71,29 +53,26 @@ body {
 .logo-title {
   padding-left: 2rem;
 }
+.navbar-elements_links {
+  display: flex;
+  justify-content: space-between;
+}
+.navbar a {
+  color: white;
+  padding: 2.5rem;
+  text-decoration: none;
+  line-height: 2.5rem;
+  border-radius: 0.4rem;
+  font-size: 3rem;
+}
 .navbar a:hover {
   background-color: #ddd;
   color: black;
 }
-.navbar a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-@media screen and (max-width: 58rem) {
-  .navbar {
-    padding: 2rem 1rem !important;
-  }
-  .navbar-elements {
-    flex-direction: column;
-  }
-  .navbar-elements_links {
-    flex-direction: column;
-  }
-}
 
 /* HERO */
 
-.hero-image {
+.hero {
   background-image: linear-gradient(to bottom, #000000, #180d1c, #261431, #351947, #451e5e, #552277);
   height: 100vh;
 }
@@ -120,6 +99,36 @@ body {
   color: white;
 }
 
+/* SEARCH */
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40vh;
+  background-color: black;
+  /* opacity: 0.8; */
+}
+input[type="text"] {
+  width: 35%;
+  border: 2px solid #ccc;
+  border-radius: 5rem;
+  font-size: 2rem;
+  background-color: white;
+  background-image: url("https://img.icons8.com/clouds/100/000000/search.png");
+  background-position: -1rem -2rem;
+  background-repeat: no-repeat;
+  padding: 2rem 2rem 2rem 10rem;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type="text"]:focus {
+  width: 55%;
+  outline: none;
+}
+
 /* BOOKS */
 
 .cards-container {
@@ -130,44 +139,62 @@ body {
   height: auto;
   width: 100%;
 }
-
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 400px;
+  width: 30rem;
+  height: 45rem;
   margin: 5rem;
-  perspective: 1000px;
+  perspective: 100rem;
 }
-
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.6s;
+  transition: transform 0.8s;
   transform-style: preserve-3d;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
-
 .flip-card-front,
 .flip-card-back {
   position: absolute;
-  width: 100%;
+  width: 30rem;
   height: 100%;
   backface-visibility: hidden;
 }
-
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
+.flip-card-front img {
+  width: 30rem;
+  height: 45rem;
 }
-
 .flip-card-back {
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 58rem) {
+  .navbar {
+    /* padding: 2rem 1rem !important; */
+  }
+  .navbar-elements {
+    width: 100%;
+  }
+  .navbar-elements_links {
+    /* flex-direction: column; */
+  }
+  .navbar a {
+    padding: 1.2rem;
+    line-height: 2.5rem;
+    font-size: 2.5rem;
+  }
+  .logo-title {
+    display: none;
+  }
+
+  .flip-card {
+    margin: 2rem;
+  }
 }
