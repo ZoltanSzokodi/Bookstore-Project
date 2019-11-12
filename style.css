@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap");
+
 html {
   font-size: 62.5%;
 }
@@ -20,51 +22,65 @@ body {
 
 /* NAVIGATION */
 
-#navbar {
+.navbar {
+  font-family: "Lobster", cursive;
   display: flex;
   justify-content: center;
   overflow: hidden;
   background-color: transparent;
-  padding: 9rem 1rem;
+  padding: 8rem 1rem;
   transition: 0.4s;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 99;
 }
-.navbar-elements {
-  width: 80%;
+.navbar-elements_logo {
+  width: 90%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .navbar-elements_links {
-  width: 25%;
+  width: 35%;
   display: flex;
   justify-content: space-between;
 }
-#navbar a {
-  color: black;
+.navbar a {
+  color: white;
   padding: 1.2rem;
   text-decoration: none;
   font-size: 1.8rem;
   line-height: 2.5rem;
   border-radius: 0.4rem;
+  font-size: 3rem;
 }
-#navbar #logo {
-  font-size: 3.5rem;
-  font-weight: bold;
+.logo-container {
+  width: 40%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  font-size: 3rem;
   transition: 0.4s;
 }
-#navbar a:hover {
+.logo {
+  width: 10rem;
+  height: 10rem;
+}
+.logo-title {
+  padding-left: 2rem;
+}
+.navbar a:hover {
   background-color: #ddd;
   color: black;
 }
-#navbar a.active {
+.navbar a.active {
   background-color: dodgerblue;
   color: white;
 }
 @media screen and (max-width: 58rem) {
-  #navbar {
+  .navbar {
     padding: 2rem 1rem !important;
   }
   .navbar-elements {

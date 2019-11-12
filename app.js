@@ -37,18 +37,23 @@ getData()
 
 // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
 window.addEventListener("scroll", scrollFunction);
-const navbar = document.getElementById("navbar");
-const logo = document.getElementById("logo");
+const navbar = document.querySelector(".navbar");
+const logoContainer = document.querySelector(".logo-container");
+const navbarLinks = document.querySelectorAll(".nav-l");
 
 function scrollFunction() {
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    navbar.style.padding = "3rem 1rem";
+    navbar.style.padding = "0rem";
     navbar.style.backgroundColor = "white";
-    logo.style.fontSize = "2.5rem";
+    logoContainer.style.color = "#261431";
+    logoContainer.style.fontSize = "2rem";
+    navbarLinks.forEach(l => l.style.color = "#261431");
   } else {
     navbar.style.padding = "8rem 1rem";
     navbar.style.backgroundColor = "transparent";
-    logo.style.fontSize = "3.5rem";
+    logoContainer.style.color = "white";
+    logoContainer.style.fontSize = "3rem";
+    navbarLinks.forEach(l => l.style.color = "white");
   }
 }
 
