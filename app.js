@@ -3,6 +3,7 @@ const navbar = document.querySelector(".navbar");
 const navbarLogo = document.querySelector(".navbar-elements_logo");
 const navbarLinks = document.querySelectorAll(".nav-l");
 const cardsContainer = document.querySelector(".cards-container");
+const overlayContent = document.querySelector(".overlay-content");
 
 // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
 
@@ -22,17 +23,18 @@ function scrollFunction() {
   }
 }
 
-// Fetch Data from API
-let dataArr = [];
+let booksArr = [];
 
-function getData() {
+// Fetch Data from API
+
+async function getData() {
   const url = "https://api.myjson.com/bins/zyv02";
-  fetch(url)
+  await fetch(url)
     .then(res => res.json())
     .then(data => {
       data.books.forEach(book => {
-        dataArr.push(book);
-
+        booksArr.push(book);
+        
         let card = document.createElement("div");
         card.className = "flip-card";
         card.innerHTML = `
@@ -42,57 +44,48 @@ function getData() {
             </div>
             <div class="flip-card-back">
               <h1>${book.title}</h1> 
-              <button class="card-button">More info</button>
+              <button class="card-button" data-book="${book.title}">More info</button>
             </div>
           </div>`
         cardsContainer.appendChild(card);
       })
       const cardButton = document.querySelectorAll(".card-button");
-      cardButton.forEach(button => button.addEventListener("click", openModal))
+      const closeBtn = document.querySelector(".close-btn")
+      cardButton.forEach(button => button.addEventListener("click", openBook))
+      closeBtn.addEventListener("click", closeBook);
     })
 }
-getData()
-console.log(dataArr);
+getData();
+// console.log(booksArr);
 
 
-// SLIDE CONTROL
+function openBook(e) {
+  let select;
+  document.getElementById("myBook").style.width = "100%";
+  let bookTitle = e.target.getAttribute("data-book");
+  
+  booksArr.forEach(book => {
+    if(bookTitle === book.title) {
+      select = book
+    }
+  })
+  // console.log(select);
+  let overlayImg = document.createElement("div");
+  overlayImg.className = "overlay-content_img";
+  overlayImg.style.backgroundImage = `url(${select.cover})`
 
-function openModal() {
-  document.getElementById("myModal").style.display = "block";
+  overlayContent.appendChild(overlayImg);
+  select = [];
+  // console.log(select);
 }
 
-function closeModal() {
-  document.getElementById("myModal").style.display = "none";
+function closeBook() {
+  let overlayImg = document.querySelector(".overlay-content_img");
+  overlayImg.parentNode.removeChild(overlayImg);
+  document.getElementById("myBook").style.width = "0%";
 }
 
-let slideIndex = 1;
-showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  const slides = document.getElementsByClassName("mySlides");
-  const dots = document.getElementsByClassName("demo");
-  const captionText = document.getElementById("caption");
-  if (n > slides.length) { slideIndex = 1 }
-  if (n < 1) { slideIndex = slides.length }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-  captionText.innerHTML = dots[slideIndex - 1].alt;
-}
 
 
 
