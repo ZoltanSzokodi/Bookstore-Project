@@ -5,6 +5,19 @@ const navbarLinks = document.querySelectorAll(".nav-l");
 const cardsContainer = document.querySelector(".cards-container");
 const overlayContent = document.querySelector(".overlay-content");
 const searchBar = document.getElementById("search");
+const body = document.querySelector("body");
+
+// Loader
+body.addEventListener("load", toggleLoader())
+
+function toggleLoader() {
+  let myVar = setTimeout(showPage, 1500);
+}
+
+function showPage() {
+  document.querySelector(".loader-container").style.display = "none";
+  document.getElementById("myContent").style.display = "block";
+}
 
 // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
 

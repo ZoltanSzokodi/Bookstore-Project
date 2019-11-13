@@ -10,42 +10,49 @@
 </head>
 
 <body>
-  <div class="content-wrapper">
 
-    <div class="navbar">
-      <div class="navbar-elements">
-        <div class="navbar-elements_logo">
-          <img src="https://img.icons8.com/clouds/100/000000/book.png" class="logo"></img>
-          <div class="logo-title">
-            <h1>libri app</h1>
+  <div class="loader-container">
+    <div id="loader"></div>
+  </div>
+
+  <div id="myContent" class="animate-bottom">
+    <div class="content-wrapper">
+
+      <div class="navbar">
+        <div class="navbar-elements">
+          <div class="navbar-elements_logo">
+            <img src="https://img.icons8.com/clouds/100/000000/book.png" class="logo"></img>
+            <div class="logo-title">
+              <h1>libri app</h1>
+            </div>
+          </div>
+          <div class="navbar-elements_links">
+            <a class="nav-l" href="#">Home</a>
+            <a class="nav-l" href="#">Contact</a>
+            <a class="nav-l" href="#">About</a>
           </div>
         </div>
-        <div class="navbar-elements_links">
-          <a class="nav-l" href="#">Home</a>
-          <a class="nav-l" href="#">Contact</a>
-          <a class="nav-l" href="#">About</a>
+      </div>
+
+      <div class="hero">
+        <div class="hero-content">
+          <h1>start browsing our online book selection for free!</h1>
+          <button class="hero-button">log in</button>
         </div>
       </div>
-    </div>
 
-    <div class="hero">
-      <div class="hero-content">
-        <h1>start browsing our online book selection for free!</h1>
-        <button class="hero-button">log in</button>
+      <div class="search">
+        <input id="search" type="text" name="search" placeholder="Search...">
       </div>
+
+      <div class="cards-container"></div>
+
+      <div id="myBook" class="overlay">
+        <a href="javascript:void(0)" class="close-btn">&times;</a>
+        <div class="overlay-content"></div>
+      </div>
+
     </div>
-
-    <div class="search">
-      <input id="search" type="text" name="search" placeholder="Search...">
-    </div>
-
-    <div class="cards-container"></div>
-
-    <div id="myBook" class="overlay">
-      <a href="javascript:void(0)" class="close-btn">&times;</a>
-      <div class="overlay-content"></div>
-    </div>
-
   </div>
 
   <script src="./app.js"></script>
